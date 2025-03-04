@@ -46,7 +46,7 @@ To learn how this project came about, check out [_LAFS-DEV_](https://github.com/
 
 _LAFS-CMS_ is intended for:
 
-* **Self-guided Learners** seeking reference full-stack implementation of a Content Management System (CMS) implementations through practical examples.
+* **Self-guided learners** seeking reference full-stack implementation of a Content Management System (CMS) web application.
 * **Information Systems students** researching organizational knowledge, in general, and knowledge loss induced by organizational member turnover (KLT) and technical solutions to KTL, specifically.
 
 ## Features
