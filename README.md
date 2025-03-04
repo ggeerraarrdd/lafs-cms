@@ -96,7 +96,7 @@ lafs-dev/
 │
 ├── logs/
 │
-├── docs/
+├── assets/
 ├── .gitignore
 ├── LICENSE
 ├── README.md
