@@ -11,12 +11,14 @@ A bespoke Content Management System (CMS)
 * [Target Users](#target-users)
 * [Features](#features)
 * [Project Structure](#project-structure)
-* [Prerequisites](#prerequisites)
-* [Getting Started](#getting-started)
+* [Quick Start](#quick-start)
+* [Local Setup](#local-setup)
+  * [Prerequisites](#prerequisites)
   * [Dependencies](#dependencies)
   * [Installation](#installation)
-  * [Configuration](#installation)
+  * [Configuration](#configuration)
 * [Usage](#usage)
+* [Production Setup](#production-setup)
 * [System Administration](#system-administration)
 * [Author(s)](#authors)
 * [Version History](#version-history)
@@ -38,7 +40,7 @@ _LAFS-CMS_, then, was conceived as an Information System solution for mitigating
 
 To learn how this project came about, check out [_LAFS-DEV_](https://github.com/ggeerraarrdd/lafs-dev).
 
-![LAFS-CMS](docs/images/lafscms_1.png)
+![LAFS-CMS](assets/images/lafscms_1.png)
 
 ## Target Users
 
@@ -95,11 +97,53 @@ lafs-dev/
 └── requirements.txt
 ```
 
-## Prerequisites
+## Quick Start
 
-* TBD
+For those who want to get up and running quickly:
 
-## Getting Started
+1. **Clone the repository**
+
+    ```bash
+    git clone https://github.com/ggeerraarrdd/lafs-cms.git
+    cd lafs-cms
+    ```
+
+2. **Set up environment and install dependencies**
+
+    ```bash
+    python3 -m venv venv
+    source venv/bin/activate  # On Windows: venv\Scripts\activate
+    pip install -r requirements.txt
+    ```
+
+3. **Access the application**
+
+    ```bash
+    cd app
+    flask run
+
+    # Navigate to the URL specified in the terminal output
+    # Add '/cms' at the end of the URL
+    ```
+
+## Local Setup
+
+### Prerequisites
+
+Before you begin, ensure you have met the following requirements:
+
+1. **Development Tools**
+
+    * Python 3.12 (not tested on other versions)
+    * [git](https://git-scm.com/) (for cloning the repository)
+
+2. **Google Maps API Key**
+
+    For the embedded maps to work, you need to set up a Google Maps API Key. Before you can create one, you will need to create a Google Cloud project, for which you need a Google Cloud account.
+
+    * [Set up a Google Cloud account](https://cloud.google.com)
+    * [Set up your Google Cloud project](https://developers.google.com/maps/documentation/javascript/cloud-setup)
+    * [Create and configure your API Key](https://developers.google.com/maps/documentation/javascript/get-api-key)
 
 ### Dependencies
 
@@ -110,7 +154,7 @@ lafs-dev/
 1. **Clone the repository**
 
     ```bash
-    git clone https://github.com/ggeerraarrdd/lafs-dev.git
+    git clone https://github.com/ggeerraarrdd/lafs-cms.git
     ```
 
 2. **Set up a Python virtual environment**
@@ -150,50 +194,42 @@ lafs-dev/
     MAX_DELAY=10
 
     # Flask Secret Key
-    SECRET_KEY='your_flask_secret_key'
+    SECRET_KEY='192b9bdd22ab9ed4d12e236c78afcb9a393ec15f71bbf5dc987d54727823bcbf'
 
     # Google Maps API Key
     MAP_API_KEY='your_map_api_key'
     ```
 
-2. **Database**
+2. **Database Options Explained**
 
-    ```python
-    # Database Path
-    DATABASE_NAME='data/lafs.db'  # Path to SQLite database file
+    `DATABASE_NAME` - path to SQLite database file
 
-    # Database Connection Pool
-    POOL_SIZE=15   # Max number of persistent connections
-    MAX_OVERFLOW=5  # Max number of connections above POOL_SIZE
-    POOL_TIMEOUT=30  # Seconds to wait for available connection
-    POOL_RECYCLE=1800  # Seconds before connection is recycled
-    ECHO=False  # Enable SQLAlchemy engine logging
+    * SQLAlchemy [Engine/Connection Pool](https://docs.sqlalchemy.org/en/20/core/engines_connections.html) Parameters:
+      * `POOL_SIZE` - max number of persistent connections
+      * `MAX_OVERFLOW` - max number of connections above POOL_SIZE
+      * `POOL_TIMEOUT` - seconds to wait for available connection
+      * `POOL_RECYCLE` - seconds before connection is recycled
+      * `ECHO` - enable SQLAlchemy engine logging
 
-    # Database Retry Settings
-    MAX_RETRIES=3  #  Max retry attempts for failed operations
-    BASE_DELAY=1  # Initial delay between retries in seconds
-    MAX_DELAY=10  # Max delay between retries in seconds
+    * Custom Retry Mechanism Parameters:
+      * `MAX_RETRIES` - max retry attempts for failed operations
+      * `BASE_DELAY` - initial delay between retries in seconds
+      * `MAX_DELAY` - max delay between retries in seconds
+
+3. **Flask Secret Key Options Explained**
+
+    From Flask's [official documentation](https://flask.palletsprojects.com/en/stable/config/): _A secret key that will be used for securely signing the session cookie and can be used for any other security related needs by extensions or your application. It should be a long random bytes or str. For example, copy the output of this to your config:_
+
+    ```bash
+    $ python -c 'import secrets; print(secrets.token_hex())'
+    '192b9bdd22ab9ed4d12e236c78afcb9a393ec15f71bbf5dc987d54727823bcbf'
     ```
 
-3. **Flask Secret Key**
+    The above is used as system default for local development. You can generate a new one using the `secrets` module fro Python standard library or using your preferred method.
 
-    ```python
-    # Flask Secret Key
-    SECRET_KEY='your_flask_secret_key'
-    ```
+4. **Google Maps API Key Options Explained**
 
-4. **Google Maps API Key**
-
-    ```python
-    # Google Maps API Key
-    MAP_API_KEY='your_map_api_key'
-    ```
-
-    An API Key is needed for the embedded map to work. Before you can create one, you will need to create a Google Cloud project, for which you need a Google Cloud account.
-
-    * [Set up a Google Cloud account](https://cloud.google.com)
-    * [Set up your Google Cloud project](https://developers.google.com/maps/documentation/javascript/cloud-setup)
-    * [Using API Keys](https://developers.google.com/maps/documentation/javascript/get-api-key)
+    While needed for the embedded maps in the website to work, a Google Maps API Key is optional for the CMS.
 
 ## Usage
 
@@ -205,11 +241,19 @@ lafs-dev/
 
 2. **Open the film series website**
 
-    Copy and open the URL displayed after 'Running on' in the terminal.
+    Navigate to the URL specified in the terminal output. For example:
+
+    ```bash
+    * Running on http://127.0.0.1:5000
+    ```
 
 3. **Access the CMS**
 
     Add `/cms` at the end of the URL.
+
+## Production Setup
+
+* TBD
 
 ## System Administration
 
@@ -247,12 +291,12 @@ lafs-dev/
 
 ## Screenshots
 
-![LAFS-CMS](docs/images/lafscms_2.png)
-![LAFS-CMS](docs/images/lafscms_3.png)
-![LAFS-CMS](docs/images/lafscms_4.png)
-![LAFS-CMS](docs/images/lafscms_5.png)
-![LAFS-CMS](docs/images/lafscms_6.png)
-![LAFS-CMS](docs/images/lafscms_7.png)
+![LAFS-CMS](assets/images/lafscms_2.png)
+![LAFS-CMS](assets/images/lafscms_3.png)
+![LAFS-CMS](assets/images/lafscms_4.png)
+![LAFS-CMS](assets/images/lafscms_5.png)
+![LAFS-CMS](assets/images/lafscms_6.png)
+![LAFS-CMS](assets/images/lafscms_7.png)
 
 ## Frontispiece
 
