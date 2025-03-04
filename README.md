@@ -44,11 +44,17 @@ To learn how this project came about, check out [_LAFS-DEV_](https://github.com/
 
 ## Target Users
 
-* TBD
+_LAFS-CMS_ is intended for:
+
+* **Self-guided Learners** seeking reference full-stack implementation of a Content Management System (CMS) implementations through practical examples.
+* **Information Systems students** researching organizational knowledge, in general, and knowledge loss induced by organizational member turnover (KLT) and technical solutions to KTL, specifically.
 
 ## Features
 
-* TBD
+* 📝 **Content Management** - Complete film series content lifecycle with CRUD operations, calendaring, and media management
+* 🔐 **User Management** - Role-based access control system with streamlined permissions and self-service registration workflow
+* 🖥️ **Interface** - User-friendly dashboard with responsive design, real-time previews, and collaborative editing tools
+* 📚 **Knowledge Continuity Framework** - Systematic documentation in a centralized repository
 
 ## Project Structure
 
@@ -99,32 +105,25 @@ lafs-dev/
 
 ## Quick Start
 
-For those who want to get up and running quickly:
+For those who want to get up and running quickly with default settings:
 
-1. **Clone the repository**
+```bash
+# Clone repo
+git clone https://github.com/ggeerraarrdd/lafs-cms.git
+cd lafs-cms
 
-    ```bash
-    git clone https://github.com/ggeerraarrdd/lafs-cms.git
-    cd lafs-cms
-    ```
+# Set up environment
+python3 -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+pip install -r requirements.txt
 
-2. **Set up environment and install dependencies**
+# Run app
+cd app
+flask run
 
-    ```bash
-    python3 -m venv venv
-    source venv/bin/activate  # On Windows: venv\Scripts\activate
-    pip install -r requirements.txt
-    ```
-
-3. **Access the application**
-
-    ```bash
-    cd app
-    flask run
-
-    # Navigate to the URL specified in the terminal output
-    # Add '/cms' at the end of the URL
-    ```
+# Navigate to the URL specified in the terminal output
+# Add '/cms' at the end of the URL
+```
 
 ## Local Setup
 
@@ -155,6 +154,7 @@ Before you begin, ensure you have met the following requirements:
 
     ```bash
     git clone https://github.com/ggeerraarrdd/lafs-cms.git
+    cd lafs-cms
     ```
 
 2. **Set up a Python virtual environment**
@@ -204,17 +204,17 @@ Before you begin, ensure you have met the following requirements:
 
     `DATABASE_NAME` - path to SQLite database file
 
-    * SQLAlchemy [Engine/Connection Pool](https://docs.sqlalchemy.org/en/20/core/engines_connections.html) Parameters:
-      * `POOL_SIZE` - max number of persistent connections
-      * `MAX_OVERFLOW` - max number of connections above POOL_SIZE
-      * `POOL_TIMEOUT` - seconds to wait for available connection
-      * `POOL_RECYCLE` - seconds before connection is recycled
-      * `ECHO` - enable SQLAlchemy engine logging
+    SQLAlchemy [Engine/Connection Pool](https://docs.sqlalchemy.org/en/20/core/engines_connections.html) Parameters:
+    * `POOL_SIZE` - max number of persistent connections
+    * `MAX_OVERFLOW` - max number of connections above POOL_SIZE
+    * `POOL_TIMEOUT` - seconds to wait for available connection
+    * `POOL_RECYCLE` - seconds before connection is recycled
+    * `ECHO` - enable SQLAlchemy engine logging
 
-    * Custom Retry Mechanism Parameters:
-      * `MAX_RETRIES` - max retry attempts for failed operations
-      * `BASE_DELAY` - initial delay between retries in seconds
-      * `MAX_DELAY` - max delay between retries in seconds
+    Custom Retry Mechanism Parameters:
+    * `MAX_RETRIES` - max retry attempts for failed operations
+    * `BASE_DELAY` - initial delay between retries in seconds
+    * `MAX_DELAY` - max delay between retries in seconds
 
 3. **Flask Secret Key Options Explained**
 
