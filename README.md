@@ -1,3 +1,12 @@
+<!-- markdownlint-disable MD041 -->
+[![GitHub release](https://img.shields.io/github/v/release/ggeerraarrdd/lafs-cms)](https://github.com/ggeerraarrdd/lafs-cms/releases)
+[![Maintenance](https://img.shields.io/badge/maintained-yes-green.svg)](https://github.com/ggeerraarrdd/lafs-cms/graphs/commit-activity)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/a4392a6382804ce1a5f915c73b353c69)](https://app.codacy.com/gh/ggeerraarrdd/lafs-cms/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+[![codecov](https://codecov.io/gh/ggeerraarrdd/lafs-cms/graph/badge.svg?token=SA84M8CGEY)](https://codecov.io/gh/ggeerraarrdd/lafs-cms)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=ggeerraarrdd_lafs-cms&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=ggeerraarrdd_lafs-cms)
+[![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com/)
+<!-- markdownlint-enable MD041 -->
+
 # LAFS-CMS
 
 A bespoke Content Management System (CMS)
